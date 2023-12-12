@@ -2,7 +2,12 @@
 
 
 def line_count(infile):
-    pass
+    count = 0
+    with open(infile, 'r') as f:
+        for line in f:
+            count += 1
+            
+    print(count)
 
 
 if __name__ == "__main__":

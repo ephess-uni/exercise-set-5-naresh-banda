@@ -17,5 +17,9 @@ input_file = data_dir / "ex_5_4-data.csv"
 output_file = output_dir / "ex_5_4-processed.csv"
 
 # Process the input data using numpy
+numpy_array = np.loadtxt(input_file)
+
+numpy_array[numpy_array < 0] = 0
 
 # Save the result to output_file
+np.savetxt(output_file, numpy_array)
