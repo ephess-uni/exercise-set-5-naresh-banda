@@ -16,4 +16,20 @@ if __name__ == "__main__":
     # Tests will run your command using a system call.
     # To test your program with arguments, run it from the command line
     # (see README.md for more details)
-    pass
+    parser = ArgumentParser(description = "This program applies a standard scale transform to the data in infile and writes it to outfile.")
+    parser.add_argument("infile")
+    parser.add_argument("outfile")
+    args = parser.parse_args()
+
+    INFILE = args.infile
+    OUTFILE = args.outfile
+
+    # Complete the data processing steps using numpy here.
+    numpy_array = np.loadtxt(INFILE)
+    
+    numpy_array -= np.mean(numpy_array)
+
+    processed_data = numpy_array/np.std(numpy_array)
+
+    # Save the output to OUTFILE using numpy routines.
+    np.savetxt(OUTFILE, processed_data)
